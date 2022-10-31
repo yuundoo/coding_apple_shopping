@@ -3,10 +3,11 @@ import './App.css';
 import {Button, Navbar, Container, Nav} from 'react-bootstrap'
 import { useState } from 'react';
 import data from "./data.js";
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route, Link, useNavigate, Outlet} from "react-router-dom";
 import styled from "styled-components";
 import Detail from './components/Detail';
-
+import Detail1 from './components/Detail1'
+import Detail2 from './components/Detail2'
 const StyleLink = styled(Link)`
   text-decoration-line: none;
 `;
@@ -14,16 +15,18 @@ const StyleLink = styled(Link)`
 function App() {
 
   let [Nutrients] = useState(data);
+  let navigate = useNavigate();
 
   return (
     <div className="App">
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Link to="/">iHerb</Link>
+        <Nav.Link onClick={()=> {navigate("/")}}>iHerb</Nav.Link>
         <Nav className="me-auto">
           <Nav.Link href="#home">메뉴</Nav.Link>
           <Nav.Link href="#features">세일 제품</Nav.Link>
-          <Nav.Link href="#pricing">내 정보</Nav.Link>
+          <Nav.Link onClick={()=> {navigate("/detail2")}}>내 정보</Nav.Link>
+          <Nav.Link onClick={()=> {navigate("/about")}}>이벤트</Nav.Link>
         </Nav>
         </Container>
       </Navbar>
@@ -42,15 +45,27 @@ function App() {
        }
       </div>
     </div> </div>} />
-      <Route path='/detail1' element={<Detail/>} />
-      <Route path='/detail2' element={<div>상세 페이지</div>} />
-      <Route path='/detail3' element={<div>상세 페이지</div>} />
-      <Route path='/about' element={<div>어바웃 페이지</div>} />
+      <Route path='/detail1' element={<Detail Nutrients={Nutrients} />}/>
+      <Route path='/detail2' element={<Detail1 Nutrients={Nutrients}/>}/>
+      <Route path='/detail3' element={<Detail2  Nutrients={Nutrients}/>}/>
+      <Route path="/about" element={ <EventPage/> } >  
+      <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>}></Route>
+      <Route path="two" element={<p>생일기념 쿠폰받기</p>}></Route>
+      </Route>
     </Routes>
      
     </div>
   );
 }
+
+function EventPage(){
+  return (
+    <div>
+      <h4>오늘의 이벤트</h4>
+      <Outlet></Outlet>
+    </div>
+  )
+} 
 
 function Card(props){
   return (

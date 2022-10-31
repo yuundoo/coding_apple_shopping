@@ -1,9 +1,4 @@
-import { useState } from "react";
-import data from "../data";
-
-function Detail(){
-
-    let [Nutrients] = useState(data);
+function Detail(props){
 
     return(
     <div className="container">
@@ -12,10 +7,10 @@ function Detail(){
       <img src={process.env.PUBLIC_URL + "/arginine1.png"} width="60%" />
     </div>
     <div className="col-md-6">
-      <h4 className="pt-5">{Nutrients[0].title}</h4>
-      <p>{Nutrients[0].content}</p>
-      <p>{Nutrients[0].price}</p>
-      <p>{Nutrients[0].explain}</p>
+      <h4 className="pt-5">{props[0].title}</h4>
+      <p>{props[0].content}</p>
+      <p>{props[0].price}</p>
+      <p>{props[0].explain}</p>
       <button className="btn btn-danger">주문하기</button> 
     </div>
   </div>

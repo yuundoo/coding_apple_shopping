@@ -9,7 +9,7 @@ function Detail1(){
     <div className="container">
   <div className="row">
     <div className="col-md-6">
-      <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" />
+    <img src={process.env.PUBLIC_URL + "/arginine2.png"} width="100%" />
     </div>
     <div className="col-md-6">
       <h4 className="pt-5">{Nutrients[1].title}</h4>
