@@ -16,9 +16,9 @@ function App() {
         <Container>
         <Nav.Link onClick={()=> {navigate("/")}}>iHerb</Nav.Link>
         <Nav className="me-auto">
-          <Nav.Link href="#home">메뉴</Nav.Link>
+          <Nav.Link href="#menu">메뉴</Nav.Link>
           <Nav.Link href="#features">세일 제품</Nav.Link>
-          <Nav.Link onClick={()=> {navigate("/detail2")}}>내 정보</Nav.Link>
+          <Nav.Link onClick={()=> {navigate("/detail/:id")}}>내 정보</Nav.Link>
           <Nav.Link onClick={()=> {navigate("/about")}}>이벤트</Nav.Link>
         </Nav>
         </Container>
@@ -67,5 +67,6 @@ function Card(props){
       </div>
   )
 }
+
 
 export default App;
