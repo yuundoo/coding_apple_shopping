@@ -1,4 +1,9 @@
+import{useParams} from "react-router-dom";
+
 function Detail(props){
+
+ let {id} = useParams();
+ console.log(id);
 
     return(
     <div className="container">
@@ -7,10 +12,10 @@ function Detail(props){
       <img src={process.env.PUBLIC_URL + "/arginine1.png"} width="60%" />
     </div>
     <div className="col-md-6">
-      <h4 className="pt-5">{props[0].title}</h4>
-      <p>{props[0].content}</p>
-      <p>{props[0].price}</p>
-      <p>{props[0].explain}</p>
+      <h4 className="pt-5">{props.Nutrients[id].title}</h4>
+      <p>{props.Nutrients[id].content}</p>
+      <p>{props.Nutrients[id].price}</p>
+      <p>{props.Nutrients[id].explain}</p>
       <button className="btn btn-danger">주문하기</button> 
     </div>
   </div>

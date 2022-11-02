@@ -4,14 +4,7 @@ import {Button, Navbar, Container, Nav} from 'react-bootstrap'
 import { useState } from 'react';
 import data from "./data.js";
 import {Routes, Route, Link, useNavigate, Outlet} from "react-router-dom";
-import styled from "styled-components";
 import Detail from './components/Detail';
-import Detail1 from './components/Detail1'
-import Detail2 from './components/Detail2'
-const StyleLink = styled(Link)`
-  text-decoration-line: none;
-`;
-
 function App() {
 
   let [Nutrients] = useState(data);
@@ -45,9 +38,7 @@ function App() {
        }
       </div>
     </div> </div>} />
-      <Route path='/detail1' element={<Detail Nutrients={Nutrients} />}/>
-      <Route path='/detail2' element={<Detail1 Nutrients={Nutrients}/>}/>
-      <Route path='/detail3' element={<Detail2  Nutrients={Nutrients}/>}/>
+      <Route path='/detail/:id' element={<Detail  Nutrients={Nutrients} />}/>
       <Route path="/about" element={ <EventPage/> } >  
       <Route path="one" element={<p>첫 주문시 양배추즙 서비스</p>}></Route>
       <Route path="two" element={<p>생일기념 쿠폰받기</p>}></Route>
@@ -71,7 +62,7 @@ function Card(props){
   return (
       <div className="col-md-4">
       <img src={process.env.PUBLIC_URL + '/arginine' + props.i +'.png'} width="70%" />
-         <p><StyleLink to="/detail1" >{props.Nutrients.title}</StyleLink></p> 
+         <p>{props.Nutrients.title}</p> 
           <p>{props.Nutrients.content}</p>
       </div>
   )
